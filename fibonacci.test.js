@@ -14,10 +14,17 @@ test('When initialized the next number can be returned', () => {
     expect(fibonacci.next()).toBe(13);
 });
 
-// test('When next next number should be returned in the sequence', () => {
-//     fibonacci.next();
-//     expect(fibonacci.init(2)).toBe(3);
-// });
+test('Call next once to see if it returns 1', () => {
+    // fibonacci.next();
+    expect(fibonacci.next()).toBe(1);
+});
+
+test('Fibby seq to see if 3 next calls equal right num', () => {
+    fibonacci.next();
+    fibonacci.next();
+    fibonacci.next();
+    expect(fibonacci.next()).toBe(5);
+});
 
 test('When skip is called it should move forward and return the number further down in fibby sequence', () => {
     fibonacci.init(2);
@@ -30,11 +37,9 @@ test('When a high number initialized, the right next number should be returned',
 });
 
 test('When initialized with number in fibby seq it should not throw error', () => {
-    expect(fibonacci.init(5)).toBe(5);
+    fibonacci.init(5)
+    expect(fibonacci.previous).toBe(3);
 });
-
-
-
 
 // Negative tests
 // Jest Example 
@@ -67,7 +72,13 @@ test('throw on two numbers in same bracket', () => {
     expect(() => {
         fibonacci.init(5, 8);
     }).toThrow();
-})
+}); 
+
+test('throw on -1 in init seed', () => {
+    expect(() => {
+        fibonacci.init(-1);
+    }).toThrow();
+});
 
 
 
